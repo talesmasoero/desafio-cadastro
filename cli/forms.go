@@ -15,6 +15,5 @@ func ReadFile(fileName string) string {
 }
 
 func PrintMenu(menu string) {
-	fmt.Printf("\n%s\n", menu)
-	fmt.Printf("\nEscolha a ação desejada (1-6): ")
+	fmt.Printf("\n%s", menu)
 }

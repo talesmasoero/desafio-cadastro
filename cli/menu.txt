@@ -4,3 +4,5 @@
 4. Listar todos os pets cadastrados
 5. Listar pets por algum critério (idade, nome, raça)
 6. Sair
+
+Escolha a ação desejada (1-6): 
