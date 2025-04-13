@@ -5,13 +5,13 @@ type Pet struct {
 	Type    string
 	Sex     string
 	Address address
-	Age     uint8
-	Weight  uint8
+	Age     string
+	Weight  string
 	Race    string
 }
 
 type address struct {
-	Number uint8
+	Number string
 	City   string
 	Street string
 }
