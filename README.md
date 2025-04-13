@@ -1,70 +1,55 @@
-# Desafio PROGRAMAÇÃO - Sistema de Cadastros 🚀
+# Desafio PROGRAMAÇÃO - Sistema de Cadastros em Go 🚀
 
-### Desafio criado por Lucas Carrilho - [@devmagro](https://www.linkedin.com/in/karilho/)
-
-Twitter: [@devmagro 🐦 ](https://x.com/devmagro)
-
-Instagram: [@devmagro 📸](https://instagram.com/devmagro)
-
-YouTube: [@devmagro 🎥](https://www.youtube.com/@devmagro)
+### Desafio criado por Lucas Carrilho - *@devmagro* ([LinkedIn](https://www.linkedin.com/in/karilho/))
 
 ## Introdução
-Você chegou ao **primeiro grande desafio do guia**! 😎 Agora, é hora de colocar a mão na massa e aplicar seus conhecimentos na prática, criando um **Sistema de Adoção para Pets!**
+Você chegou ao **primeiro grande desafio do guia**! 😎 Agora, é hora de colocar a mão na massa e aplicar seus conhecimentos na prática, criando um **Sistema de Adoção para Pets em Go!**
 
-Leia TODO o desafio com ATENÇÃO antes de começar a faze-lo e respeite as regras, evite o uso do GPT ao máximo e use-o com sabedoria quando necessário!
+Leia TODO o desafio com ATENÇÃO antes de começar e respeite as regras. Evite o uso de IA generativa ao máximo e use-a com sabedoria apenas quando necessário!
+
 ## Objetivo
-Neste desafio, você será desafiado a criar um sistema de cadastro via CLI (interface de linha de comando), para nossos futuros adotantes poderem escolher o seu animalzinho.
-
-O dono do abrigo de animais que será o usuário do seu programa será capaz de:
+Neste desafio, você criará um sistema de cadastro via CLI (interface de linha de comando) em Go, permitindo que futuros adotantes escolham seus pets. O dono do abrigo de animais, usuário do programa, poderá:
 
 - Cadastrar um novo pet
-- Buscar dados do pet cadastrado
+- Buscar dados de um pet cadastrado
+- Alterar os dados de um pet cadastrado
 - Deletar um pet cadastrado
 - Listar todos os pets cadastrados
-- Listar pets por algum critério (idade, nome, raça)
-- E muito mais!
+- Listar pets por critérios (idade, nome, raça)
+- E mais!
 
-O sistema deve ser implementado utilizando conceitos de Orientação a Objetos e outras boas práticas de programação. 🚀
+O sistema deve ser implementado utilizando structs, manipulação de arquivos, organização em pacotes e boas práticas de Go. 🚀
 
 ## Conhecimentos que você irá aplicar:
-- Orientação a Objetos (OO)
-- Manipulação de arquivos e arrays
-- Java IO
-- Exceções
+- Structs e métodos em Go
+- Manipulação de arquivos e arrays/slices
+- Tratamento de erros em Go
 - Boas práticas de código
-- File Systems
+- Organização de pacotes
 
 # Requisitos do Desafio 📋
 
-O desafio será organizado em **PASSOS** em que você irá desenvolver novas funcionalidades para nossa aplicação CLI.
+O desafio é dividido em **PASSOS**, nos quais você desenvolverá novas funcionalidades para a aplicação CLI. Sinta-se à vontade para criar structs, funções e pacotes conforme achar necessário!
 
-Fique a vontade para criar e organizar entidades, serviços, utils e como desejar para este projeto!
+Para começar, faça um *fork* deste repositório, clone-o em sua máquina local e deixe sua ⭐ no repositório.
 
-Para iniciar, crie um Fork deste repositório e clone-o em sua máquina local, e também deixe sua ⭐ no repositório.
+## 📍 Passo 1 - Leitura do arquivo de base com as perguntas essenciais 📄
+Crie um arquivo chamado `formulario.txt` com as seguintes perguntas:
 
-## 📍Passo 1 - Leitura do arquivo de base com as perguntas essenciais. 📄
-Crie um arquivo chamado `formulario.txt`, que deverá conter as seguintes perguntas:
-
-**1 - Qual o nome e sobrenome do pet?**
-
-**2 - Qual o tipo do pet (Cachorro/Gato)?**
-
-**3 - Qual o sexo do animal?**
-
-**4 - Qual endereço e bairro que ele foi encontrado?**
-
-**5 - Qual a idade aproximada do pet?**
-
-**6 - Qual o peso aproximado do pet?**
-
+**1 - Qual o nome e sobrenome do pet?**  
+**2 - Qual o tipo do pet (Cachorro/Gato)?**  
+**3 - Qual o sexo do animal?**  
+**4 - Qual endereço e bairro que ele foi encontrado?**  
+**5 - Qual a idade aproximada do pet?**  
+**6 - Qual o peso aproximado do pet?**  
 **7 - Qual a raça do pet?**
 
-Sua aplicação deve ler o conteúdo desse arquivo `.txt` e exibir as perguntas no terminal. 
+Sua aplicação deve ler esse arquivo `.txt` e exibir as perguntas no terminal.
 
-**<span style="color:red">Não é permitido usar o "print" nas perguntas no código, você deverá LER o arquivo!</span>** 
+**<span style="color:red">Não é permitido usar `fmt.Println` para exibir as perguntas diretamente no código; você deve LER o arquivo!</span>**
 
-## 📍Passo 2: Criação do menu inicial 📝
-Após o arquivo estar printando o conteúdo do `formulario.txt` no terminal, você deverá criar um menu inicial com as seguintes opções:
+## 📍 Passo 2: Criação do menu inicial 📝
+Após exibir o conteúdo do `formulario.txt`, crie um menu inicial com as opções:
 
 1. Cadastrar um novo pet
 2. Alterar os dados do pet cadastrado
@@ -73,182 +58,135 @@ Após o arquivo estar printando o conteúdo do `formulario.txt` no terminal, voc
 5. Listar pets por algum critério (idade, nome, raça)
 6. Sair
 
-O menu deve ser exibido no terminal e o usuário deve poder escolher uma opção digitando o número correspondente.
+O menu deve aparecer no terminal, e o usuário deve escolher uma opção digitando o número correspondente.
 
 ### _Regras ⚠️_
+1. O usuário não pode usar 0 ou números negativos.
+2. Se o usuário digitar um número inválido, o menu deve ser exibido novamente.
+3. Só números são permitidos (sem letras ou caracteres especiais).
 
-1. O usuário não poderá usar 0 ou números negativos.
-2. Caso o usuário digite um número inválido, o menu deve ser exibido novamente.
-3. O usuário só poderá digitar números, não podendo digitar letras ou caracteres especiais.
-
-
-## 📍Passo 3: Cadastro de novos Pets 📝
-
-O usuário, ao selecionar a opção 1, deve ser capaz de cadastrar um novo pet.
-Neste momento, você deverá ler as **PERGUNTAS** do arquivo `formulario.txt` e armazenar as respostas em um objeto do tipo `Pet`.
+## 📍 Passo 3: Cadastro de novos Pets 📝
+Ao selecionar a opção 1, o usuário deve cadastrar um novo pet. Leia as perguntas do `formulario.txt` e armazene as respostas em uma struct `Pet`.
 
 ### _Regras ⚠️_
+1. O nome e sobrenome do pet são obrigatórios; caso contrário, retorne um erro.
+2. O nome completo só pode conter letras de A-Z (sem caracteres especiais).
+3. Para o endereço, pergunte:
+   - Número da casa
+   - Cidade
+   - Rua
+4. Idade e peso aceitam números com vírgulas ou pontos, mas apenas números.
+5. Peso maior que 60kg ou menor que 0.5kg gera erro.
+6. Idade maior que 20 anos gera erro.
+7. Idade menor que 1 ano (em meses) deve ser convertida para 0.X anos.
+8. Raça não pode conter números ou caracteres especiais.
+9. Se nome, raça, peso, idade ou número do endereço não forem informados, preencha com a constante `"NÃO INFORMADO"`.
 
-1. O usuário obrigatoriamente deverá cadastrar um pet com nome e sobrenome, caso contrário, lance uma exceção.
-2. O nome completo NÃO poderá conter caracteres especiais, somente letras de A-Z.
-3. Para o TIPO e SEXO do pet, você deverá usar ENUM.
-4. Na pergunta sobre o endereço, você deverá perguntar:
-    1. Número da casa
-    2. Cidade
-    3. Rua
-5. Na idade e peso aproximados do pet, o usuário poderá digitar números com vírgulas ou ponto, mas somente números.
-6. Caso o usuário digite um peso maior que 60kg ou um peso menor que 0.5kg, lance uma exceção.
-7. Caso o usuário digite uma idade maior que 20 anos, lance uma exceção.
-8. Caso o usuário digite uma idade menor que 1 ano (idade em meses), transforme em 0.x anos.
-9. No campo raça o usuário não poderá usar números nem caracteres especiais.
-10. Nas perguntas sobre NOME, RAÇA, PESO, IDADE e ENDEREÇO (somente o campo número), caso o usuário NÃO INFORME ou deixe em branco, você deverá preencher com NÃO INFORMADO (deve ser uma constante)!
-
-
-## 📍Passo 4: Armazenamento em Arquivo 📂
-Agora, ao salvar o PET em um objeto, você deverá salvar as respostas em um arquivo `.txt` com o nome formatado da seguinte maneira: 
-
-`20231101T1234-FLORZINHADASILVA.TXT`.
+## 📍 Passo 4: Armazenamento em Arquivo TXT 📂
+Salve as respostas em um arquivo `.txt` com o nome no formato: `20231101T1234-FLORZINHADASILVA.txt`.
 
 ### _Regras ⚠️_
+1. O nome do arquivo deve seguir o formato: ano, mês, dia, "T", hora, minuto - NOME+SOBRENOME em maiúsculas.
+2. Salve o arquivo na pasta `petsCadastrados` na raiz do projeto.
+3. O conteúdo deve ter cada resposta em uma linha, sem as perguntas. Exemplo:
+   ```
+   Florzinha da Silva
+   Gato
+   Femea
+   Rua 2, 456, Seilandia
+   6 anos
+   5kg
+   Siames
+   ```
 
-1. O nome do arquivo deverá seguir o formato: ano, mês, dia,T, hora, minuto - NOME+SOBRENOME em maiúsculo.
-2. O arquivo deverá ser salvo na pasta `petsCadastrados` na raiz do projeto.
-3. O conteúdo do arquivo deverá conter TODAS AS RESPOSTAS POR LINHA, ou seja, cada resposta deverá estar em uma linha diferente.
-4. O campo endereço deverá ser salvo todo na mesma linha.
-5. O arquivo somente conterá **RESPOSTAS**, PERGUNTAS NÃO!
-
-Exemplo de arquivo salvo:
-
-```
-1 - Florzinha da Silva 
-2 - Gato 
-3 - Femea 
-4 - Rua 2, 456, Seilandia 
-5 - 6 anos 
-6 - 5kg 
-7 - Siames
-```
-
-## 📍Passo 5: Buscar os dados do Pet Cadastrado 🔍
-O usuário, ao selecionar a opção 2, deverá ser capaz de buscar o pet usando determinados dados.
-O usuário poderá buscar o pet por:
+## 📍 Passo 5: Buscar os dados do Pet Cadastrado 🔍
+Na opção 2, o usuário deve buscar pets por critérios como:
 - Nome ou sobrenome
 - Sexo
 - Idade
 - Peso
 - Raça
-- Endereço 
+- Endereço
 
-Além disso, o usuário poderá combinar de 1 a 2 critérios de busca, ou seja: 
-
-- Nome e / ou sobrenome E IDADE
-- Idade E peso 
-
-Então, neste momento, você deverá EXIBIR um novo menu perguntando sobre quais critérios o usuário desejará usar para buscar o pet.
-
-Após o usuário selecionar os critérios, você deverá printar no terminal os pets que correspondem aos critérios de busca, podendo ser 1 ou mais, neste formato:
-
-
-### _Regras ⚠️_
-1. O usuário PRIMEIRAMENTE e SEMPRE deverá escolher o critério TIPO DE ANIMAL.
-2. O formato de resposta, deverá exibir SEMPRE uma lista de possiveis resultados, por exemplo:
+Permita combinar 1 ou 2 critérios (ex.: nome e idade). Exiba um submenu para escolher os critérios e mostre os resultados no formato:
 
 ```
-1.  Rex - Cachorro - Macho  - Rua 1, 123 - Cidade 1 - 2 anos - 5kg - Vira-lata
-2.  Florzinha da Silva - Gato - Femea - Rua 2, 456 - Seilandia - 6 anos - 5kg - Siames
+1. Rex - Cachorro - Macho - Rua 1, 123 - Cidade 1 - 2 anos - 5kg - Vira-lata
+2. Florzinha da Silva - Gato - Femea - Rua 2, 456 - Seilandia - 6 anos - 5kg - Siames
 ```
 
-3. Caso o usuário escolha por exemplo, NOME, os resultados da busca devem trazer PARTES do nome, por exemplo, caso ele pesquise por FLOR, deverá trazer o caso 2 citado anteriormente.
-4. Toda busca deverá ser case-sensitive, ou seja, ignorar maiuscula e minuscula (tratando como iguais) e acentos.
+### _Regras ⚠️_
+1. O critério "tipo de animal" é obrigatório e deve ser escolhido primeiro.
+2. A busca por nome deve incluir partes (ex.: "FLOR" encontra "Florzinha").
+3. A busca deve ser *case-insensitive* (ignorar maiúsculas/minúsculas e acentos).
 
-### _Regra nível 2 (não obrigatória) ⚠️_
+### _Regra nível 2 (opcional) ⚠️_
+1. Permita busca por data de cadastro (mês e ano) combinada com outros critérios.
+2. Destaque o termo pesquisado nos resultados (ex.: negrito). Use códigos ANSI para formatação no terminal.
 
-1. Permitir que o usuário busque por DATA de CADASTRO no sistema, por exemplo, você informa mês e ano (+ 1 ou 2 critérios) e ele traz essas informações
-2. Ao imprimir os resultados encontrados, colocar em NEGRITO o termo da pesquisa utilizado quando for encontrado na resposta. (Exemplo: Se ele pesquisar por FLOR, o nome do pet deverá ser impresso em NEGRITO)
-
-## 📍Passo 6: Altera um pet cadastrado ✍️
-Permitir que o usuário altere os dados de um pet cadastrado.
+## 📍 Passo 6: Alterar um pet cadastrado ✍️
+Na opção 3, permita alterar os dados de um pet.
 
 ### _Regras ⚠️_
-1. O usuário deverá BUSCAR seguindo os critérios da resposta anterior.
-2. Caso o usuário digite um número de busca inválido, o menu de busca deverá ser exibido novamente.
-3. O usuário receberá uma LISTA (igual a exibição anterior) com os resultados da busca, e deverá escolher o número do pet que deseja alterar.
-4. O usuário poderá alterar TODOS os dados do pet, EXCETO o TIPO E SEXO
+1. Use os critérios de busca do Passo 5.
+2. Exiba a lista de resultados e peça o número do pet a alterar.
+3. Permita alterar todos os dados, exceto `tipo` e `sexo`.
+4. Se o número for inválido, repita o menu de busca.
+5. Após alterar, salve o arquivo `.txt` com as novas informações.
 
-## 📍Passo 7: Deletar um animal cadastro 🔍
-O usuário, ao selecionar a opção de 4, deverá ser capaz de deletar o pet.
+## 📍 Passo 7: Deletar um animal cadastrado 🔍
+Na opção 4, permita deletar um pet.
 
 ### _Regras ⚠️_
-1. O usuário deverá BUSCAR seguindo os critérios da resposta anterior.
-2. Caso o usuário digite um número de busca inválido, o menu de busca deverá ser exibido novamente.
-3. O usuário receberá uma LISTA (igual a exibição anterior) com os resultados da busca, e deverá escolher o número do pet que deseja deletar.
-4. O usuário deverá confirmar a exclusão do pet, digitando SIM ou NÃO.
-5. Só poderá ser deletado um pet por vez.
-6. Caso o usuário digite SIM, o pet deverá ser deletado e uma mensagem de sucesso deverá ser exibida.
+1. Use os critérios de busca do Passo 5.
+2. Exiba a lista e peça o número do pet a deletar.
+3. Solicite confirmação ("SIM" ou "NÃO").
+4. Delete o arquivo `.txt` correspondente se "SIM".
 
+## 📍 Passo 8: Sair
+Na opção 7, encerre o programa.
 
-## 📍Passo 8: Sair 
-
-Ao selecionar a opção 5, o programa deverá ser encerrado.
-
-## 📍Passo EXTRA ☠️☠️☠️
-
-Caso você tenha concluído todos os passos anteriores, você poderá implementar uma funcionalidade extra para o seu programa.
-
-Você irá criar na tela inicial, uma nova tela de opções, sendo:
-
+## 📍 Passo EXTRA ☠️☠️☠️
+Adicione um menu inicial extra:
 ```
 1 - Iniciar o sistema para cadastro de PETS
 2 - Iniciar o sistema para alterar formulário
 ```
 
-Caso o usuário escolha a opção 2, você deverá exibir um novo menu com as seguintes opções:
-
-1. Criar nova pergunta 
+Na opção 2, exiba:
+1. Criar nova pergunta
 2. Alterar pergunta existente
 3. Excluir pergunta existente
-4. Voltar para o menu inicial
+4. Voltar ao menu inicial
 5. Sair
 
 ### _Regras Opção 1 ⚠️_
-1. O usuário deverá digitar a nova pergunta, e você deverá salvar no arquivo `formulario.txt` a nova pergunta
-2. A pergunta deverá SEGUIR a ordem com a númeração obrigatória, ou seja, ele deverá olhar para a pergunta ANTERIOR e adicionar +1 na númeração.
-3. Novas perguntas não tem obrigatoriedade de resposta, mas caso o usuário **NÃO** responda, coloque um NÃO INFORMADO.
+1. Adicione a nova pergunta ao `formulario.txt` com numeração sequencial.
+2. Respostas são opcionais; use "NÃO INFORMADO" se vazio.
 
 ### _Regras Opção 2 ⚠️_
-1. O usuário NÃO PODERÁ modificar as perguntas ORIGINAIS (de 1 a 7), somente as perguntas que ele adicionou.
-2. O usuário deverá digitar o número da pergunta que deseja alterar,então você deverá printar na tela e oferecer a opção a ser alterada.
-3. O usuário poderá alterar a pergunta, mas não a resposta, ou seja, você deverá perguntar a nova pergunta e salvar no arquivo.
+1. Só altere perguntas além das 7 originais.
+2. Peça o número da pergunta, exiba-a e permita editá-la.
 
 ### _Regras Opção 3 ⚠️_
-1. O usuário NÃO PODERÁ deletar as perguntas ORIGINAIS (de 1 a 7), somente as perguntas que ele adicionou.
-2. O usuário deverá digitar o número da pergunta que deseja deletar, então você deverá printar na tela e oferecer a opção a ser deletada.
-3. O usuário deverá confirmar a exclusão da pergunta, digitando SIM ou NÃO.
+1. Só delete perguntas além das 7 originais.
+2. Confirme com "SIM" ou "NÃO".
 
-### _Regras GERAIS das novas opções ⚠️_
-
-1. Caso existam 9 perguntas (2 adicionadas), e o usuário DELETE A PERGUNTA 8, a pergunta 9 deverá tomar o lugar da 8.
-2. Não deixe NENHUMA LINHA VAZIA no arquivo de perguntas ou de respostas, sempre reorganize-os
-3. Ao perguntar uma das novas PERGUNTAS adicionadas (caso existam), você deverá ler o arquivo de perguntas e exibir as perguntas adicionadas normalmente.
-4. Caso o usuário RESPONDA, o arquivo salvo com o pet deverá conter a resposta da pergunta adicionada no seguinte formato:
-
-```
-1 - Florzinha da Silva 
-2 - Gato 
-3 - Femea 
-4 - Rua 2, 456, Seilandia 
-5 - 6 anos 
-6 - 5kg 
-7 - Siames
-8 - [EXTRA - PERGUNTA NOVA ADICIONADA] - RESPOSTA DO USUÁRIO
-9 - [EXTRA - PERGUNTA NOVA ADICIONADA] - RESPOSTA DO USUÁRIO
-```
+### _Regras Gerais ⚠️_
+1. Reorganize a numeração se uma pergunta for deletada.
+2. Evite linhas vazias no `formulario.txt`.
+3. Ao cadastrar um pet, inclua as perguntas extras e salve as respostas no arquivo `.txt` do pet, com o formato:
+   ```
+   1 - Florzinha da Silva
+   ...
+   7 - Siames
+   8 - [EXTRA - PERGUNTA NOVA ADICIONADA] - RESPOSTA DO USUÁRIO
+   9 - [EXTRA - PERGUNTA NOVA ADICIONADA] - RESPOSTA DO USUÁRIO
+   ```
 
 ## Considerações Finais 📝
-
-- **Siga implementando o projeto e fazendo commits à medida que for concluindo as funcionalidades, seguindo o padrão sempre de [Conventional commits](https://www.youtube.com/watch?v=sbK9h45Jc5o)**
-
-- **Crie um arquivo README.md com uma descrição do seu projeto e instruções de como executá-lo.**
+- Faça *commits* conforme avança, seguindo o padrão [Conventional Commits](https://www.youtube.com/watch?v=sbK9h45Jc5o).
+- Crie um README.md com a descrição do projeto e instruções de execução.
 
 ### Gostou do projeto?
-Se você chegou até aqui, parabéns! Você concluiu o primeiro grande desafio do guia. 🚀
+Parabéns por chegar até aqui! Você concluiu o primeiro grande desafio adaptado para Go. 🚀
