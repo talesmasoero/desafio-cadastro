@@ -1,11 +1,8 @@
 package main
 
 import (
-	"bufio"
 	"fmt"
 	"mypets/cli"
-	"os"
-	"strconv"
 	"time"
 )
 
@@ -19,19 +16,18 @@ func main() {
 }
 
 func run() {
-	scanner := bufio.NewScanner(os.Stdin)
 	// questions := forms.ReadFile(questionsFile)
 	menu := cli.ReadFile(menuFile)
 
 	for {
 		cli.PrintMenu(menu)
-		scanner.Scan()
-		action := scanner.Text()
-		act, _ := strconv.Atoi(action)
 
-		switch act {
+		action := cli.ReadInt() // ou ReadAction
+
+		switch action {
 		case 1:
 			fmt.Println("Cadastrando pet...")
+			// pet.Register()
 		case 2:
 			fmt.Println("Alterando pet...")
 		case 3:
