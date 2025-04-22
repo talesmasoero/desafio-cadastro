@@ -3,12 +3,12 @@ package main
 import (
 	"fmt"
 	"mypets/cli"
+	"mypets/service"
 	"time"
 )
 
 const (
-	// questionsFile = "cli/questions.txt"
-	menuFile = "cli/menu.txt"
+	menuPath = "cli/forms/menu.txt"
 )
 
 func main() {
@@ -16,18 +16,16 @@ func main() {
 }
 
 func run() {
-	// questions := forms.ReadFile(questionsFile)
-	menu := cli.ReadFile(menuFile)
+	menu := cli.ReadFile(menuPath)
 
 	for {
 		cli.PrintMenu(menu)
-
-		action := cli.ReadInt() // ou ReadAction
+		action := cli.ReadAction()
 
 		switch action {
 		case 1:
 			fmt.Println("Cadastrando pet...")
-			// pet.Register()
+			service.RegisterPet()
 		case 2:
 			fmt.Println("Alterando pet...")
 		case 3:
@@ -40,7 +38,7 @@ func run() {
 			return
 		default:
 			fmt.Println("ERRO: a ação deve ser um número entre 1 e 6")
-			time.Sleep(time.Millisecond * 3500)
+			time.Sleep(time.Millisecond * 3000)
 		}
 	}
 }
