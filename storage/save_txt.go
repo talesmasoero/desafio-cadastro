@@ -8,14 +8,9 @@ import (
 	"time"
 )
 
-const (
-	yyyymmdd = "20060102"
-	hhmm     = "1504" // 03: 12h clock (am/pm) - 15: 24h clock
-)
-
 func SaveTXT(p *models.Pet) {
 	fileName := formatFileName(p.Name)
-	file, err := os.Create("data/" + fileName)
+	file, err := os.Create(folder + fileName)
 	if err != nil {
 		fmt.Printf("ERRO ao criar o arquivo '%s': %v", fileName, err)
 	}
